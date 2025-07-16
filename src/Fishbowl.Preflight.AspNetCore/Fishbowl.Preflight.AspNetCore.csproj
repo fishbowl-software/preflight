@@ -8,7 +8,7 @@
 		<RootNamespace>Fishbowl.Preflight.AspNetCore</RootNamespace>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>Fishbowl.Preflight.AspNetCore</PackageId>
-		<Version>0.1.8</Version>
+		<Version>1.0.0-preview</Version>
 		<Authors>Fishbowl</Authors>
 		<Company>Fishbowl LLC</Company>
 		<PackageTags>openapi;aspnetcore;validation;middleware;swagger</PackageTags>
