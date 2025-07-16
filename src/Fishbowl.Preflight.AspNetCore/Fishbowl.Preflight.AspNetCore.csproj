@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AssemblyName>Fishbowl.Preflight.AspNetCore</AssemblyName>
+		<RootNamespace>Fishbowl.Preflight.AspNetCore</RootNamespace>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageId>Fishbowl.Preflight.AspNetCore</PackageId>
+		<Version>0.1.8</Version>
+		<Authors>Fishbowl</Authors>
+		<Company>Fishbowl LLC</Company>
+		<PackageTags>openapi;aspnetcore;validation;middleware;swagger</PackageTags>
+		<Description>ASP.NET Core integration for Fishbowl.Preflight — validates HttpContext requests against OpenAPI specs.</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryUrl>https://github.com/fishbowlllc/fishbowl.preflight</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/fishbowlllc/fishbowl.preflight</PackageProjectUrl>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Fishbowl.Preflight\Fishbowl.Preflight.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+</Project>
