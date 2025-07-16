@@ -47,6 +47,9 @@ jobs:
       with:
         dotnet-version: 8.x
 
+    - name: Build projects
+      run: dotnet build Fishbowl.Preflight.sln --configuration Release
+
     - name: Pack Fishbowl.Preflight
       run: dotnet pack src/Fishbowl.Preflight/Fishbowl.Preflight.csproj -c Release -o ./artifacts
 
