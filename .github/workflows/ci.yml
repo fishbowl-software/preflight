@@ -39,7 +39,8 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout source
+      uses: actions/checkout@v3
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -53,7 +54,10 @@ jobs:
       run: dotnet build Fishbowl.Preflight.sln -c Release --no-restore
 
     - name: Pack everything
-      run: dotnet pack Fishbowl.Preflight.sln -c Release --no-build -o packed
+      run: dotnet pack Fishbowl.Preflight.sln -c Release -o packed
+
+    - name: List packed files
+      run: dir packed
 
     - name: Push to NuGet
       run: dotnet nuget push packed/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
