@@ -47,10 +47,14 @@ jobs:
       with:
         dotnet-version: 8.x
 
-    - name: Pack Preflight projects (build + pack)
-      run: |
-        dotnet pack src/Fishbowl.Preflight/Fishbowl.Preflight.csproj -c Release
-        dotnet pack src/Fishbowl.Preflight.AspNetCore/Fishbowl.Preflight.AspNetCore.csproj -c Release
+    - name: Build projects
+      run: dotnet build Fishbowl.Preflight.sln --configuration Release
+
+    - name: Pack Preflight
+      run: dotnet pack src/Fishbowl.Preflight/Fishbowl.Preflight.csproj -c Release --no-build
+
+    - name: Pack Preflight.AspNetCore
+      run: dotnet pack src/Fishbowl.Preflight.AspNetCore/Fishbowl.Preflight.AspNetCore.csproj -c Release --no-build
 
     - name: Publish to NuGet
       run: dotnet nuget push src/**/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
