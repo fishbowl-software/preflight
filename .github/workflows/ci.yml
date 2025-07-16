@@ -49,22 +49,11 @@ jobs:
     - name: Restore
       run: dotnet restore Fishbowl.Preflight.sln
 
-    - name: Build Fishbowl.Preflight
-      run: dotnet build src/Fishbowl.Preflight/Fishbowl.Preflight.csproj -c Release --no-restore
+    - name: Build solution
+      run: dotnet build Fishbowl.Preflight.sln -c Release --no-restore
 
-    - name: Build Fishbowl.Preflight.AspNetCore
-      run: dotnet build src/Fishbowl.Preflight.AspNetCore/Fishbowl.Preflight.AspNetCore.csproj -c Release --no-restore
+    - name: Pack everything
+      run: dotnet pack Fishbowl.Preflight.sln -c Release --no-build -o packed
 
-    - name: Check that DLLs exist
-      run: |
-        dir src\Fishbowl.Preflight\bin\Release\net8.0
-        dir src\Fishbowl.Preflight.AspNetCore\bin\Release\net8.0
-
-    - name: Pack Fishbowl.Preflight
-      run: dotnet pack src/Fishbowl.Preflight/Fishbowl.Preflight.csproj -c Release --no-build
-
-    - name: Pack Fishbowl.Preflight.AspNetCore
-      run: dotnet pack src/Fishbowl.Preflight.AspNetCore/Fishbowl.Preflight.AspNetCore.csproj -c Release --no-build
-
-    - name: Publish to NuGet
-      run: dotnet nuget push src/**/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+    - name: Push to NuGet
+      run: dotnet nuget push packed/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
