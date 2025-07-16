@@ -1,0 +1,29 @@
+name: Preflight CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.x
+
+    - name: Restore packages
+      run: dotnet restore Fishbowl.Preflight.sln
+
+    - name: Build solution
+      run: dotnet build Fishbowl.Preflight.sln --configuration Release --no-restore
+
+    - name: Run tests
+      run: dotnet test Fishbowl.Preflight.sln --configuration Release --no-build --verbosity normal
