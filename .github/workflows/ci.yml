@@ -39,21 +39,31 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
 
     steps:
-    - name: Checkout source
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.x
 
-    - name: Build projects
-      run: dotnet build Fishbowl.Preflight.sln --configuration Release
+    - name: Restore
+      run: dotnet restore Fishbowl.Preflight.sln
 
-    - name: Pack Preflight
+    - name: Build Fishbowl.Preflight
+      run: dotnet build src/Fishbowl.Preflight/Fishbowl.Preflight.csproj -c Release --no-restore
+
+    - name: Build Fishbowl.Preflight.AspNetCore
+      run: dotnet build src/Fishbowl.Preflight.AspNetCore/Fishbowl.Preflight.AspNetCore.csproj -c Release --no-restore
+
+    - name: Check that DLLs exist
+      run: |
+        dir src\Fishbowl.Preflight\bin\Release\net8.0
+        dir src\Fishbowl.Preflight.AspNetCore\bin\Release\net8.0
+
+    - name: Pack Fishbowl.Preflight
       run: dotnet pack src/Fishbowl.Preflight/Fishbowl.Preflight.csproj -c Release --no-build
 
-    - name: Pack Preflight.AspNetCore
+    - name: Pack Fishbowl.Preflight.AspNetCore
       run: dotnet pack src/Fishbowl.Preflight.AspNetCore/Fishbowl.Preflight.AspNetCore.csproj -c Release --no-build
 
     - name: Publish to NuGet
