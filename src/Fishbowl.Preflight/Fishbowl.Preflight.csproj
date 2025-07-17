@@ -12,8 +12,8 @@
 		<PackageTags>openapi;validation;swagger;request;api;preflight</PackageTags>
 		<Description>Validate HTTP requests against OpenAPI specs before execution. Built by Fishbowl.</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<RepositoryUrl>https://github.com/fishbowlllc/fishbowl.preflight</RepositoryUrl>
-		<PackageProjectUrl>https://github.com/fishbowlllc/fishbowl.preflight</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/fishbowl-software/preflight</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/fishbowl-software/preflight</PackageProjectUrl>
 	</PropertyGroup>
 
 	<ItemGroup>

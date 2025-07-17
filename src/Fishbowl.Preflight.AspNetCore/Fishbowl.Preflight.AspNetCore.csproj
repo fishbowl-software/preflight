@@ -14,8 +14,8 @@
 		<PackageTags>openapi;aspnetcore;validation;middleware;swagger</PackageTags>
 		<Description>ASP.NET Core integration for Fishbowl.Preflight — validates HttpContext requests against OpenAPI specs.</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<RepositoryUrl>https://github.com/fishbowlllc/fishbowl.preflight</RepositoryUrl>
-		<PackageProjectUrl>https://github.com/fishbowlllc/fishbowl.preflight</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/fishbowl-software/preflight</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/fishbowl-software/preflight</PackageProjectUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
